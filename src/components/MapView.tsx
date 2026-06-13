@@ -44,10 +44,10 @@ function buildPopupContent(spot: Spot, lang: Lang): HTMLElement {
       <span class="text-xl">${spot.emoji}</span>
       <div>
         <p class="font-bold text-stone-800 leading-tight">${spot.name[lang]}</p>
-        <p class="text-xs text-orange-500">${spot.category[lang]}</p>
+        <p class="text-xs text-[#BC6C49]">${spot.category[lang]}</p>
       </div>
     </div>
-    <div class="bg-orange-50 rounded-lg p-2 mb-2">
+    <div class="bg-[#FBEFE9] rounded-lg p-2 mb-2">
       <p class="text-sm text-stone-700 leading-relaxed">${spot.trivia[lang]}</p>
     </div>
     <div class="flex items-center gap-1.5 text-xs text-stone-500">
@@ -103,7 +103,7 @@ export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
       el.style.justifyContent = 'center'
       el.style.fontSize = '18px'
       el.style.background = '#fff'
-      el.style.border = '2px solid #FB923C'
+      el.style.border = '2px solid #BC6C49'
       el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.25)'
       el.style.cursor = 'pointer'
       el.style.transition = 'transform 0.2s ease'
@@ -131,11 +131,11 @@ export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
     Object.entries(markerElsRef.current).forEach(([id, el]) => {
       if (id === selectedId) {
         el.style.transform = 'scale(1.3)'
-        el.style.borderColor = '#EA580C'
+        el.style.borderColor = '#8C4A33'
         el.style.zIndex = '10'
       } else {
         el.style.transform = 'scale(1)'
-        el.style.borderColor = '#FB923C'
+        el.style.borderColor = '#BC6C49'
         el.style.zIndex = '0'
       }
     })

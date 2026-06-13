@@ -19,7 +19,7 @@ export default function Header({ lang, onLangChange }: Props) {
     <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-3 pointer-events-none">
       <div className="select-none">
         <h1
-          className="text-2xl font-extrabold text-orange-500 tracking-tight leading-tight"
+          className="text-2xl font-extrabold text-[#BC6C49] tracking-tight leading-tight"
           style={{ textShadow }}
         >
           🧭 {t.title}
@@ -34,7 +34,7 @@ export default function Header({ lang, onLangChange }: Props) {
           <button
             onClick={() => onLangChange('ja')}
             className={`px-3 py-1 rounded-full transition ${
-              lang === 'ja' ? 'bg-orange-400 text-white' : 'text-stone-500'
+              lang === 'ja' ? 'bg-[#BC6C49] text-white' : 'text-stone-500'
             }`}
           >
             日本語
@@ -42,7 +42,7 @@ export default function Header({ lang, onLangChange }: Props) {
           <button
             onClick={() => onLangChange('en')}
             className={`px-3 py-1 rounded-full transition ${
-              lang === 'en' ? 'bg-orange-400 text-white' : 'text-stone-500'
+              lang === 'en' ? 'bg-[#BC6C49] text-white' : 'text-stone-500'
             }`}
           >
             English
