@@ -7,7 +7,7 @@ interface Props {
   spots: Spot[]
   lang: Lang
   selectedId: string | null
-  onSelect: (id: string) => void
+  onSelect: (id: string | null) => void
 }
 
 const style: maplibregl.StyleSpecification = {
@@ -28,10 +28,43 @@ const style: maplibregl.StyleSpecification = {
   layers: [{ id: 'osm', type: 'raster', source: 'osm' }],
 }
 
+const POPUP_COPY = {
+  ja: { trivia: '知ってましたか？', bestTime: 'おすすめの時間帯', bestSeason: 'おすすめの時期' },
+  en: { trivia: 'Did you know?', bestTime: 'Best time to visit', bestSeason: 'Best season to visit' },
+}
+
+function buildPopupContent(spot: Spot, lang: Lang): HTMLElement {
+  const t = POPUP_COPY[lang]
+  const bestTimeLabel = spot.bestTimeType === 'season' ? t.bestSeason : t.bestTime
+
+  const container = document.createElement('div')
+  container.className = 'p-1 max-w-[260px]'
+  container.innerHTML = `
+    <div class="flex items-center gap-2 mb-2">
+      <span class="text-xl">${spot.emoji}</span>
+      <div>
+        <p class="font-bold text-stone-800 leading-tight">${spot.name[lang]}</p>
+        <p class="text-xs text-orange-500">${spot.category[lang]}</p>
+      </div>
+    </div>
+    <div class="bg-orange-50 rounded-lg p-2 mb-2">
+      <p class="text-xs font-semibold text-orange-500 mb-1">${t.trivia}</p>
+      <p class="text-sm text-stone-700 leading-relaxed">${spot.trivia[lang]}</p>
+    </div>
+    <div class="flex items-center gap-1.5 text-xs text-stone-500">
+      <span>🕒</span>
+      <span>${bestTimeLabel}: ${spot.bestTime[lang]}</span>
+    </div>
+  `
+  return container
+}
+
 export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
   const mapDivRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
   const markerElsRef = useRef<Record<string, HTMLDivElement>>({})
+  const popupRef = useRef<maplibregl.Popup | null>(null)
+  const suppressCloseRef = useRef(false)
 
   useEffect(() => {
     if (!mapDivRef.current) return
@@ -47,8 +80,11 @@ export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
       bounds,
       fitBoundsOptions: { padding: 60 },
       canvasContextAttributes: { preserveDrawingBuffer: true },
+      attributionControl: false,
     })
     mapRef.current = map
+
+    map.addControl(new maplibregl.AttributionControl({ compact: false }), 'bottom-right')
 
     map.on('error', (e) => {
       console.error('[Komichi] MapLibre error:', e.error)
@@ -88,7 +124,7 @@ export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // 選択中のスポットをマーカーの見た目とカメラに反映
+  // 選択中のスポットをマーカーの見た目・吹き出し・カメラに反映
   useEffect(() => {
     Object.entries(markerElsRef.current).forEach(([id, el]) => {
       if (id === selectedId) {
@@ -102,15 +138,38 @@ export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
       }
     })
 
-    if (!selectedId) return
     const map = mapRef.current
+    if (!map) return
+
+    if (popupRef.current) {
+      suppressCloseRef.current = true
+      popupRef.current.remove()
+      popupRef.current = null
+    }
+
+    if (!selectedId) return
     const spot = spots.find((s) => s.id === selectedId)
-    if (!map || !spot) return
+    if (!spot) return
+
+    const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: false, offset: 22, maxWidth: '280px' })
+      .setLngLat([spot.lng, spot.lat])
+      .setDOMContent(buildPopupContent(spot, lang))
+      .addTo(map)
+
+    popup.on('close', () => {
+      if (suppressCloseRef.current) {
+        suppressCloseRef.current = false
+        return
+      }
+      onSelect(null)
+    })
+
+    popupRef.current = popup
 
     const fly = () => map.easeTo({ center: [spot.lng, spot.lat], zoom: 15, duration: 800 })
     if (map.isStyleLoaded()) fly()
     else map.once('load', fly)
-  }, [selectedId, spots])
+  }, [selectedId, lang, spots, onSelect])
 
   return (
     <div

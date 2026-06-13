@@ -14,4 +14,5 @@ export interface Spot {
   lng: number
   trivia: LocalizedText
   bestTime: LocalizedText
+  bestTimeType: 'time' | 'season'
 }

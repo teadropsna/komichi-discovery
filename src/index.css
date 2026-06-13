@@ -13,3 +13,17 @@ body {
   border-radius: 12px;
   font-family: inherit;
 }
+
+.maplibregl-ctrl-attrib {
+  background: transparent !important;
+  color: #9ca3af !important;
+  font-size: 11px;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: #9ca3af !important;
+}
+
+.maplibregl-ctrl-attrib-button {
+  display: none !important;
+}
