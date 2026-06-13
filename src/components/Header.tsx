@@ -37,7 +37,7 @@ export default function Header({ lang, onLangChange }: Props) {
               lang === 'ja' ? 'bg-orange-400 text-white' : 'text-stone-500'
             }`}
           >
-            JA
+            日本語
           </button>
           <button
             onClick={() => onLangChange('en')}
@@ -45,7 +45,7 @@ export default function Header({ lang, onLangChange }: Props) {
               lang === 'en' ? 'bg-orange-400 text-white' : 'text-stone-500'
             }`}
           >
-            EN
+            English
           </button>
         </div>
       </div>

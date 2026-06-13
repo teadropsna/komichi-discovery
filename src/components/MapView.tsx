@@ -29,8 +29,8 @@ const style: maplibregl.StyleSpecification = {
 }
 
 const POPUP_COPY = {
-  ja: { trivia: '知ってましたか？', bestTime: 'おすすめの時間帯', bestSeason: 'おすすめの時期' },
-  en: { trivia: 'Did you know?', bestTime: 'Best time to visit', bestSeason: 'Best season to visit' },
+  ja: { bestTime: 'おすすめの時間帯', bestSeason: 'おすすめの時期' },
+  en: { bestTime: 'Best time to visit', bestSeason: 'Best season to visit' },
 }
 
 function buildPopupContent(spot: Spot, lang: Lang): HTMLElement {
@@ -48,7 +48,6 @@ function buildPopupContent(spot: Spot, lang: Lang): HTMLElement {
       </div>
     </div>
     <div class="bg-orange-50 rounded-lg p-2 mb-2">
-      <p class="text-xs font-semibold text-orange-500 mb-1">${t.trivia}</p>
       <p class="text-sm text-stone-700 leading-relaxed">${spot.trivia[lang]}</p>
     </div>
     <div class="flex items-center gap-1.5 text-xs text-stone-500">
@@ -110,7 +109,10 @@ export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
       el.style.transition = 'transform 0.2s ease'
       el.textContent = spot.emoji
 
-      el.addEventListener('click', () => onSelect(spot.id))
+      el.addEventListener('click', (e) => {
+        e.stopPropagation()
+        onSelect(spot.id)
+      })
 
       new maplibregl.Marker({ element: el }).setLngLat([spot.lng, spot.lat]).addTo(map)
       markerElsRef.current[spot.id] = el
@@ -151,7 +153,7 @@ export default function MapView({ spots, lang, selectedId, onSelect }: Props) {
     const spot = spots.find((s) => s.id === selectedId)
     if (!spot) return
 
-    const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: false, offset: 22, maxWidth: '280px' })
+    const popup = new maplibregl.Popup({ closeButton: true, closeOnClick: true, offset: 22, maxWidth: '280px' })
       .setLngLat([spot.lng, spot.lat])
       .setDOMContent(buildPopupContent(spot, lang))
       .addTo(map)
