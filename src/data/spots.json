@@ -1,0 +1,80 @@
+[
+  {
+    "id": "hikawa-jinja",
+    "name": { "ja": "渋谷氷川神社", "en": "Shibuya Hikawa Shrine" },
+    "category": { "ja": "神社", "en": "Shrine" },
+    "emoji": "⛩️",
+    "lat": 35.6486,
+    "lng": 139.6975,
+    "trivia": {
+      "ja": "渋谷駅から徒歩15分ほどのこの神社は、実は渋谷区内で最も古い神社のひとつ。江戸時代には「渋谷氷川神社の力相撲」が奉納される人気行事で、今でも境内には土俵の跡が残っています。",
+      "en": "About a 15-minute walk from Shibuya Station, this is one of the oldest shrines in the area. In the Edo period it hosted a famous sumo ritual, and the old ring still remains on the grounds today."
+    },
+    "bestTime": { "ja": "朝の参拝がおすすめ（静かに過ごせます）", "en": "Best in the early morning, when it's quiet" }
+  },
+  {
+    "id": "nabeshima-shoto-park",
+    "name": { "ja": "鍋島松濤公園", "en": "Nabeshima Shoto Park" },
+    "category": { "ja": "公園", "en": "Park" },
+    "emoji": "🌳",
+    "lat": 35.6605,
+    "lng": 139.6924,
+    "trivia": {
+      "ja": "渋谷のビル街からすぐの場所にありながら、ここはかつて紀州徳川家にゆかりのある屋敷の庭園だった場所。今も湧水で満たされた池があり、都心とは思えない静けさが楽しめます。",
+      "en": "Just steps from Shibuya's busy streets, this park was once part of a feudal-era estate garden. A spring-fed pond still remains, offering a surprisingly tranquil escape from the city."
+    },
+    "bestTime": { "ja": "新緑がきれいな5月ごろ", "en": "Around May, when the greenery is fresh" }
+  },
+  {
+    "id": "chatei-haton",
+    "name": { "ja": "茶亭 羽當", "en": "Chatei Haton" },
+    "category": { "ja": "喫茶店", "en": "Cafe" },
+    "emoji": "☕",
+    "lat": 35.6595,
+    "lng": 139.7041,
+    "trivia": {
+      "ja": "宮益坂の路地裏にひっそりと佇む喫茶店。サイフォンで一杯ずつ丁寧に抽出されるコーヒーは、渋谷で働く人々に長年愛されてきた「隠れ家」的な存在です。",
+      "en": "Tucked away in a side alley off Miyamasuzaka, this small coffee shop has quietly served siphon-brewed coffee to Shibuya office workers for decades — a true hidden gem."
+    },
+    "bestTime": { "ja": "平日の午後がゆったり過ごせます", "en": "Weekday afternoons are calm and relaxing" }
+  },
+  {
+    "id": "log-road-daikanyama",
+    "name": { "ja": "ログロード代官山", "en": "Log Road Daikanyama" },
+    "category": { "ja": "散策路", "en": "Walkway" },
+    "emoji": "🛤️",
+    "lat": 35.6494,
+    "lng": 139.7016,
+    "trivia": {
+      "ja": "ここはかつて東急東横線が地上を走っていた線路跡地。緑道として整備され、今では個性的なショップが並ぶ散策スポットになりました。足元の舗装をよく見ると、レールの面影を感じるパターンが残っています。",
+      "en": "This walkway was once an above-ground railway line before it moved underground. Now lined with unique shops, look closely at the pavement and you can still spot patterns echoing the old rail tracks."
+    },
+    "bestTime": { "ja": "夕方〜夜のライトアップも素敵", "en": "Evenings are lovely, when the path is lit up" }
+  },
+  {
+    "id": "meguro-river-promenade",
+    "name": { "ja": "目黒川緑道（中目黒）", "en": "Meguro River Promenade" },
+    "category": { "ja": "緑道", "en": "Riverside Path" },
+    "emoji": "🌸",
+    "lat": 35.6444,
+    "lng": 139.6989,
+    "trivia": {
+      "ja": "桜の名所として有名なこの川沿いの道ですが、実は江戸時代には水車が並ぶ農産物の生産地として賑わっていたエリア。今もところどころに、当時の様子を伝える説明板が残っています。",
+      "en": "Famous for cherry blossoms, this riverside path was once a bustling agricultural area dotted with waterwheels. A few signboards along the way still tell that story."
+    },
+    "bestTime": { "ja": "桜の季節以外も、静かに散策できます", "en": "Worth a quiet visit even outside cherry blossom season" }
+  },
+  {
+    "id": "saigoyama-park",
+    "name": { "ja": "西郷山公園", "en": "Saigoyama Park" },
+    "category": { "ja": "公園", "en": "Park" },
+    "emoji": "🗻",
+    "lat": 35.6478,
+    "lng": 139.6962,
+    "trivia": {
+      "ja": "西郷隆盛の弟の邸宅があったことが名前の由来のこの公園は、実は渋谷区内で富士山が見える数少ないスポットのひとつ。展望広場からの夕焼けは地元の人にも人気です。",
+      "en": "Named after the brother of the famous samurai Saigo Takamori, this park is one of the few spots in Shibuya where you can see Mt. Fuji on a clear day. The sunset view from the lookout is a local favorite."
+    },
+    "bestTime": { "ja": "晴れた日の夕方がおすすめ", "en": "Best on a clear evening" }
+  }
+]
